@@ -5,7 +5,7 @@ sys.path.insert(0, "/app/share/pyside6apptemplate") # flatpak path
 import os
 
 #PySide6, Qt Designer UI files
-from PySide6.QtWidgets import QApplication, QPushButton
+from PySide6.QtWidgets import QApplication, QPushButton #Import widgets here as needed
 from PySide6.QtGui import QIcon
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
@@ -13,22 +13,13 @@ from PySide6.QtCore import QFile
 
 
 def in_flatpak() -> bool:
-    # Checks if the app is running inside a Flatpak sandbox
+    """Return True if running inside a Flatpak sandbox."""
     return os.environ.get("FLATPAK_SANDBOX_DIR") is not None
-
-def app_icon(path_svg,path_png):
-    # tries to load the svg icon, app falls back to png if it fails
-    icon = QIcon(path_svg)
-    if icon.isNull():
-        return QIcon(path_png)
-    else:
-        return icon
         
-# bundle of ui-launching code
-def launch_window(ui_path:str,window_title:str="WindowTitle"):
-    # new_window = launch_window(pathToUI,title)
+def launch_window(ui_file:str,window_title:str="WindowTitle"):
+    """Launch a new window of the given ui element, optionally set the window title."""
     loader = QUiLoader()
-    ui = QFile(ui_path)
+    ui = QFile(ui_file)
     ui.open(QFile.OpenModeFlag.ReadOnly)
     variable_name = loader.load(ui)
     ui.close()
@@ -39,11 +30,10 @@ def launch_window(ui_path:str,window_title:str="WindowTitle"):
     return variable_name
 
 
+uipath = "app/share/pyside6apptemplate/" if in_flatpak() else "./src/"
 
+ui_main = uipath + "mainwindow.ui"
 
-ui_main = "./src/mainwindow.ui"
-path_svg = "./io.github.rfrench3.pyside6-flatpak-template.svg"
-path_png = "./io.github.rfrench3.pyside6-flatpak-template.png"
 
 # logic for the main window
 
@@ -64,8 +54,7 @@ class MainWindowLogic():
 
 # Logic that loads the main window
 app = QApplication([])
-#icon = app_icon(path_svg,path_png)
-icon = QIcon.fromTheme("io.github.rfrench3.pyside6-flatpak-template")
+icon = QIcon.fromTheme("io.github.rfrench3.pyside6-flatpak-template") # this will only load when the app has been installed as a flatpak.
 
 window_main = launch_window(ui_main,"Basic Window")
 logic = MainWindowLogic(window_main)

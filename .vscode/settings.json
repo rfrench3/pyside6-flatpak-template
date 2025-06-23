@@ -1,0 +1,8 @@
+{
+    "python.analysis.exclude": [
+        "**/build",
+        "**/.flatpak-builder",
+        "**/builddir",
+        "**/repo"
+    ]
+}
