@@ -14,7 +14,7 @@ from PySide6.QtCore import QFile
 
 def in_flatpak() -> bool:
     """Return True if running inside a Flatpak sandbox."""
-    return os.environ.get("FLATPAK_SANDBOX_DIR") is not None
+    return os.path.exists("/.flatpak-info")
         
 def launch_window(ui_file:str,window_title:str="WindowTitle"):
     """Launch a new window of the given ui element, optionally set the window title."""
