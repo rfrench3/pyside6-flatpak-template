@@ -1,0 +1,36 @@
+id: io.github.rfrench3.pyside6-flatpak-template
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+base: io.qt.PySide.BaseApp
+base-version: '6.9'
+command: pyside6apptemplate
+finish-args: # make sure the finish-args align with what your app does
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+
+build-options:
+  env:
+    - BASEAPP_REMOVE_WEBENGINE=1 # these lines make the app faster and smaller, leave
+    - BASEAPP_DISABLE_NUMPY=1    # them as-is unless you need the webengine or numpy
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
+modules:
+  - name: pyside6apptemplate
+    buildsystem: simple
+    sources:
+      - type: git
+        url: https://github.com/rfrench3/pyside6-flatpak-template.git # replace with your repository url
+        tag: main #USE A TAGGED RELEASE WHEN SUBMITTING THIS!
+    build-commands:
+      - mkdir -p /app/share/pyside6apptemplate
+      - install -Dm755 src/main.py /app/bin/pyside6apptemplate
+      - install -m644 src/*.ui /app/share/pyside6apptemplate/
+      - install -Dm644 src/img/io.github.rfrench3.pyside6-flatpak-template.svg /app/share/icons/hicolor/scalable/apps/io.github.rfrench3.pyside6-flatpak-template.svg
+      - install -Dm644 src/img/io.github.rfrench3.pyside6-flatpak-template.png /app/share/icons/hicolor/128x128/apps/io.github.rfrench3.pyside6-flatpak-template.png
+      - install -Dm644 io.github.rfrench3.pyside6-flatpak-template.metainfo.xml /app/share/metainfo/io.github.rfrench3.pyside6-flatpak-template.metainfo.xml
+      - desktop-file-edit --set-key=Exec --set-value=pyside6apptemplate io.github.rfrench3.pyside6-flatpak-template.desktop
+      - install -Dm644 io.github.rfrench3.pyside6-flatpak-template.desktop /app/share/applications/io.github.rfrench3.pyside6-flatpak-template.desktop
+
