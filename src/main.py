@@ -10,6 +10,15 @@ from PySide6.QtGui import QIcon
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 
+
+ui_main = "./src/mainwindow.ui"
+path_svg = "./io.github.rfrench3.pyside6-flatpak-template.svg"
+path_png = "./io.github.rfrench3.pyside6-flatpak-template.png"
+
+def in_flatpak() -> bool:
+    # Checks if the app is running inside a Flatpak sandbox
+    return os.path.exists("/.flatpak-info")
+
 def icon_path(path_svg,path_png) -> str:
     # tries to load the svg icon, app falls back to png if it fails
     icon = QIcon(path_svg)
@@ -38,10 +47,10 @@ class MainWindowLogic():
         self.window = window
 
         # connect ui elements to code
-        self.button = self.window.findChild(QLineEdit,"lineEdit_rWidth")
+        self.button = self.window.findChild(QPushButton,"pushButton")
 
         # Connect actions to slots or functions
-        self.button.triggered.connect(self.button_clicked)
+        self.button.clicked.connect(self.button_clicked)
         
     def button_clicked(self):
         print("button clicked!")
