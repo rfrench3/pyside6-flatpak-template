@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 
+"""
+PySide6 Flatpak Template
+
+Created in 2025 by rfrench3 (TealMango) - https://github.com/rfrench3
+
+Licensed under the GNU GPLv3 only. See LICENSE file in the project root for full license information.
+"""
+
+
+
 import sys
-sys.path.insert(0, "/app/share/pyside6apptemplate") # flatpak path
 import os
+
+# locating other application files
+sys.path.insert(0, "/app/share/pyside6apptemplate") # flatpak path
+from program_file_locator import DATA_DIR
 
 #PySide6, Qt Designer UI files
 from PySide6.QtWidgets import QApplication, QPushButton #Import widgets here as needed
@@ -10,29 +23,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 
-
-
-def in_flatpak() -> bool:
-    """Return True if running inside a Flatpak sandbox."""
-    return os.path.exists("/.flatpak-info")
-        
-def launch_window(ui_file:str,window_title:str="WindowTitle"):
-    """Launch a new window of the given ui element, optionally set the window title."""
-    loader = QUiLoader()
-    ui = QFile(ui_file)
-    ui.open(QFile.OpenModeFlag.ReadOnly)
-    variable_name = loader.load(ui)
-    ui.close()
-
-    #set window attributes
-    variable_name.setWindowTitle(window_title)
-    variable_name.setWindowIcon(icon)
-    return variable_name
-
-
-uipath = "app/share/pyside6apptemplate/" if in_flatpak() else "./src/"
-
-ui_main = uipath + "mainwindow.ui"
+ui_main = DATA_DIR + "mainwindow.ui"
 
 
 # logic for the main window
