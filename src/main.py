@@ -25,7 +25,7 @@ from PySide6.QtGui import QIcon
 #from PySide6.QtCore import QFile
 
 # Edit the .ui file using Qt Designer
-ui_main = os.path.join(DATA_DIR, "mainwindow.ui")
+ui_main = os.path.join(DATA_DIR, "main_window.ui")
 
 # logic for the main windowscopebuddy-guiscopebuddy-gui
 
