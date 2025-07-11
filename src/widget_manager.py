@@ -14,7 +14,8 @@ app_icon = QIcon.fromTheme("io.github.rfrench3.pyside6apptemplate")
 
 def load_widget(ui_file: str, window_title:str='Scopebuddy GUI', icon:QIcon=app_icon):
     """Load a widget from a UI file and return it.
-    Handles widgets as windows and widgets loaded into windows."""
+    Is able to load widgets as standalone windows and widgets embedded into other widgets.
+    Great for situations where you need a set of widgets too large to simply load directly."""
     loader = QUiLoader()
     ui = QFile(ui_file)
     ui.open(QFile.OpenModeFlag.ReadOnly)

@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="load_message_box">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -33,7 +33,7 @@
      <string>PushButton for QMessageBox</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="load_advanced_window">
     <property name="geometry">
      <rect>
       <x>380</x>
