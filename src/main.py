@@ -20,16 +20,13 @@ from widget_manager import app_icon, load_widget, load_message_box
 
 #PySide6, Qt Designer UI files
 from PySide6.QtWidgets import QApplication, QPushButton #Import widgets here as needed
-from PySide6.QtGui import QIcon
-#from PySide6.QtUiTools import QUiLoader
-#from PySide6.QtCore import QFile
 
 # Edit the .ui file using Qt Designer
 ui_main = os.path.join(DATA_DIR, "main_window.ui")
 
 # logic for the main windowscopebuddy-guiscopebuddy-gui
 
-class MainWindowLogic():
+class MainWindow():
     def __init__(self, window): 
         self.window = window
 
@@ -46,18 +43,15 @@ class MainWindowLogic():
             "message box text!"
         )
 
-
-
 # Logic that loads the main window
 app = QApplication([])
-icon = QIcon.fromTheme("io.github.rfrench3.pyside6-flatpak-template") # this will only load when the app has been installed as a flatpak.
 
 window_main = load_widget(
     ui_main,
-    "Application Main Window"
-    # path to custom icon goes here, if your app uses more than one icon 
+    "Application Main Window",
+    app_icon # defaults to app_icon if not specified, this only needs to be set for custom icons
     )
-logic = MainWindowLogic(window_main)
+logic = MainWindow(window_main)
 
 window_main.show()
 app.exec()

@@ -8,8 +8,9 @@ from PySide6.QtUiTools import QUiLoader
 
 
 
-
+# This will only load the app icon from the theme, which happens automatically when installed as a flatpak
 app_icon = QIcon.fromTheme("io.github.rfrench3.pyside6apptemplate")
+
 
 def load_widget(ui_file: str, window_title:str='Scopebuddy GUI', icon:QIcon=app_icon):
     """Load a widget from a UI file and return it.
