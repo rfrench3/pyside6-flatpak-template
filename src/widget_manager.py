@@ -9,9 +9,9 @@ from PySide6.QtUiTools import QUiLoader
 
 
 
-icon = QIcon.fromTheme("io.github.rfrench3.scopebuddy-gui")
+app_icon = QIcon.fromTheme("io.github.rfrench3.pyside6apptemplate")
 
-def load_widget(ui_file: str, window_title:str='Scopebuddy GUI', icon:QIcon|None=icon):
+def load_widget(ui_file: str, window_title:str='Scopebuddy GUI', icon:QIcon=app_icon):
     """Load a widget from a UI file and return it.
     Handles widgets as windows and widgets loaded into windows."""
     loader = QUiLoader()

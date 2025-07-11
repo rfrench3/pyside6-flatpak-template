@@ -17,14 +17,33 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>60</y>
-      <width>88</width>
+      <x>20</x>
+      <y>80</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>PushButton for QMessageBox</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>100</y>
+      <width>221</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Load a more advanced window</string>
     </property>
    </widget>
   </widget>
@@ -37,14 +56,23 @@
      <height>30</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuMenu_Bar">
-    <property name="title">
-     <string>Menu Bar</string>
-    </property>
-   </widget>
-   <addaction name="menuMenu_Bar"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionentry_A">
+   <property name="text">
+    <string>entry A</string>
+   </property>
+  </action>
+  <action name="actionEntry_B">
+   <property name="text">
+    <string>Entry B </string>
+   </property>
+  </action>
+  <action name="actionpart_c">
+   <property name="text">
+    <string>part c</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
