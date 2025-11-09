@@ -15,6 +15,7 @@ png = current_folder / "io.github.rfrench3.pyside6-flatpak-template.png"
 svg = current_folder / "io.github.rfrench3.pyside6-flatpak-template.svg"
 desktop = current_folder / "io.github.rfrench3.pyside6-flatpak-template.desktop"
 mainpy = current_folder / "src" / "main.py"
+readme = current_folder / "README.md"
 
 if input("Accept changes? (y/N) ").lower() != 'y':
     print("Operation cancelled.")
@@ -93,15 +94,30 @@ def edit_desktop():
 
     for i, line in enumerate(lines):
         if line.startswith("Name="):
-            lines[i] = f"Name={app_name}"
+            lines[i] = f"Name={app_name}\n"
         if line.startswith("Exec="):
-            lines[i] = f"Exec={app_command}"
+            lines[i] = f"Exec={app_command}\n"
         if line.startswith("Icon="):
-            lines[i] = f"Icon={app_id}"
+            lines[i] = f"Icon={app_id}\n"
 
     with open(desktop, "w") as file:
         file.writelines(lines)
 edit_desktop()
+
+### readme file ###
+def edit_readme():
+    with open(readme, "r") as file:
+        lines = file.readlines()
+
+    for i, line in enumerate(lines):
+        if "io.github.rfrench3.pyside6-flatpak-template" in line:
+            lines[i] = lines[i].replace("io.github.rfrench3.pyside6-flatpak-template", app_id)
+
+    with open(readme, "w") as file:
+        file.writelines(lines)
+edit_readme()
+
+
 
 print("Success! Now you must:\n" \
 "- update the README.md\n" \

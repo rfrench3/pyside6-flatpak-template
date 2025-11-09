@@ -26,7 +26,7 @@ uv run python src/main.py
 
 
 ### yml File
-- The yml file is a blueprint for building the app. It can source files from a local directory, but has been set up here to look for a GitHub repository (a local directory section is present, but commented out).
+- The yml file is a blueprint for building the app. It can source files from git directly, but for building locally and with the automated github workflow it should stay as-is.
 - While the tag is able to be set to a branch (such as main), for security and stability reasons it should in all cases be set to a tagged release outside of testing your latest changes.
 
 ### Building the App
