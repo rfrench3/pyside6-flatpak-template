@@ -16,7 +16,6 @@ xml = current_folder / "io.github.rfrench3.pyside6-flatpak-template.metainfo.xml
 png = current_folder / "io.github.rfrench3.pyside6-flatpak-template.png"
 svg = current_folder / "io.github.rfrench3.pyside6-flatpak-template.svg"
 desktop = current_folder / "io.github.rfrench3.pyside6-flatpak-template.desktop"
-readme = current_folder / "README.md"
 
 if input("Accept changes? (y/N) ").lower() != 'y':
     print("Operation cancelled.")
@@ -77,5 +76,5 @@ with open(xml, "w") as file:
 print("Success! Now you must:\n" \
 "- update the README.md\n" \
 "- ensure you are using the latest PySide6 and KDE runtimes (check the yml and requirements.in/txt).\n" \
-f"- finish updating the information in the {id}.metainfo.xml file\n" \
+f"- finish updating the information in the {app_id}.metainfo.xml file\n" \
 "- create your new application!")
