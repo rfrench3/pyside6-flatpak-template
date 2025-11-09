@@ -21,12 +21,12 @@ modules:
   - name: pyside6apptemplate
     buildsystem: simple
     sources:
-      - type: git
-        url: https://github.com/rfrench3/pyside6-flatpak-template.git # replace with your repository url
-        tag: main #USE A TAGGED RELEASE WHEN SUBMITTING TO FLATHUB!
+#      - type: git
+#        url: https://github.com/rfrench3/pyside6-flatpak-template.git # replace with your repository url
+#        tag: main #USE A TAGGED RELEASE WHEN SUBMITTING TO FLATHUB!
 # or, for a local build, comment out/delete the above and use the below:
-#      - type: dir
-#        path: .
+      - type: dir
+        path: .
     build-commands:
       - mkdir -p /app/share/pyside6apptemplate
       - install -Dm755 src/main.py /app/bin/pyside6apptemplate
