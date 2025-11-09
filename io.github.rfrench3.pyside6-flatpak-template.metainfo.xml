@@ -3,6 +3,7 @@
   <id>io.github.rfrench3.pyside6-flatpak-template</id>
 
   <!-- Make sure the information in this xml matches your app! -->
+  <!-- JDAppstreamEdit is an excellent tool to use for generating this file! -->
 
   <name translate="no">PySide6 Flatpak Template</name>
   <summary>Template application for a Flatpak using PySide6</summary>
