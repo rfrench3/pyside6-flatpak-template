@@ -4,6 +4,7 @@ builddir
 flatpak_build.sh
 io.github.rfrench3.pyside6-flatpak-template.flatpak
 repo
+.directory
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

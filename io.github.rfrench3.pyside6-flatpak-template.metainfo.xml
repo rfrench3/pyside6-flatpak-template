@@ -1,19 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <component type="desktop-application">
+  <!--Created with jdAppStreamEdit 9.2-->
   <id>io.github.rfrench3.pyside6-flatpak-template</id>
 
   <!-- Make sure the information in this xml matches your app! -->
+  <!-- JDAppstreamEdit is an excellent tool to use for generating this file! -->
 
   <name translate="no">PySide6 Flatpak Template</name>
+
   <summary>Template application for a Flatpak using PySide6</summary>
+
   <icon type="stock">io.github.rfrench3.pyside6-flatpak-template</icon>
+
+  <developer id="your.developer.id">
+    <name>Developer Name</name>
+  </developer>
 
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0-only</project_license>
-
-  <developer id="io.github.rfrench3">
-    <name translate="no">Robert French</name>
-  </developer>
 
   <description>
     <p>
@@ -21,30 +25,68 @@
     </p>
   </description>
 
-  <branding>
-    <color type="primary" scheme_preference="light">#c875ff</color> <!-- These colors show up as a background in stores like Discover -->
-    <color type="primary" scheme_preference="dark">#380066</color>
-  </branding>
-
-  <content_rating type="oars-1.1" /> <!-- ensure the content rating is accurate -->
-
-  <url type="bugtracker">https://github.com/rfrench3/pyside6-flatpak-template/issues</url> <!-- add various relevant URLs -->
-  <url type="vcs-browser">https://github.com/rfrench3/pyside6-flatpak-template</url>
-
-  <launchable type="desktop-id">io.github.rfrench3.pyside6-flatpak-template.desktop</launchable>
   <screenshots>
-    <screenshot type="default">
-      <image type="source">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template/v0.1/src/img/mainWindow.png</image>
+    <screenshot>
+      <caption>SVG App Icon.</caption>
+      <image type="source">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template.svg</image>
+      <image type="source" xml:lang="en">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template.svg</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template/v0.1/src/img/applyWindow.png</image>
+      <caption>PNG App Icon.</caption>
+      <image type="source">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template.png</image>
+      <image type="source" xml:lang="en">https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template.png</image>
     </screenshot>
   </screenshots>
+
   <releases>
-    <release version="0.1" date="2025-06-23">
+    <release version="v0.0.2" date="2025-11-05" type="stable">
       <description>
-        Description of the update features.
+        <p>Second release example.</p>
+      </description>
+    </release>
+    <release version="v0.0.1" date="2025-10-11" type="stable">
+      <description>
+        <p>First release example.</p>
       </description>
     </release>
   </releases>
+
+  <!-- MAKE SURE THESE ARE ALL CORRECT! -->
+
+  <url type="homepage">https://github.com/rfrench3/pyside6-flatpak-template</url>
+  <url type="bugtracker">https://github.com/rfrench3/pyside6-flatpak-template/issues</url>
+  <url type="vcs-browser">https://github.com/rfrench3/pyside6-flatpak-template</url>
+
+  <categories>
+    <category>Utility</category>
+    <category>Settings</category>
+  </categories>
+
+  <requires>
+    <display_length compare="ge">600</display_length>
+  </requires>
+
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+
+  <content_rating type="oars-1.1"/>
+
+  <launchable type="desktop-id">io.github.rfrench3.pyside6-flatpak-template.desktop</launchable>
+
+  <keywords>
+    <keyword>Flatpak</keyword>
+    <keyword>Tutorial</keyword>
+    <keyword>Application</keyword>
+    <keyword>With</keyword>
+    <keyword>PySide6</keyword>
+  </keywords>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#ffffff</color>
+    <color type="primary" scheme_preference="dark">#000000</color>
+  </branding>
+
 </component>
+

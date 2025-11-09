@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="load_message_box">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
+      <y>150</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -33,17 +33,33 @@
      <string>PushButton for QMessageBox</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="load_advanced_window">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>100</y>
+      <x>270</x>
+      <y>150</y>
       <width>221</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
      <string>Load a more advanced window</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>10</y>
+      <width>651</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>This template showcases the various ways to interact with Qt widgets using PySide6. It was not designed to look good while doing so.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
