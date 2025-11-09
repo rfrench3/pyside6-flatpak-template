@@ -39,6 +39,8 @@ yml = yml.rename(f"{app_id}.yml")
 xml = xml.rename(f"{app_id}.metainfo.xml")
 desktop = desktop.rename(f"{app_id}.desktop")
 
+### YML FILE ###
+
 with open(yml, "r") as file:
     lines = file.readlines()
 
@@ -47,11 +49,33 @@ for i, line in enumerate(lines):
         lines[i] = lines[i].replace("io.github.rfrench3.pyside6-flatpak-template", app_id)
     elif "pyside6apptemplate" in line:
         lines[i] = lines[i].replace("pyside6apptemplate", app_command)
-    elif ("url: https://github.com/" in line) and parse_github:
-        lines[i] = line.split("url: ")[0] + f"url: https://github.com/{username}/{repo}.git\n"
+    elif ("https://github.com/rfrench3/pyside6-flatpak-template.git" in line) and parse_github:
+        lines[i] = lines[i].replace("https://github.com/rfrench3/pyside6-flatpak-template.git", f"https://github.com/{username}/{repo}.git")
 
 with open(yml, "w") as file:
     file.writelines(lines)
 
+### XML FILE ###
 
-print("Success! Now you must update the README.md and ensure you are using the latest PySide6 and KDE runtimes (check the yml and requirements.in/txt).")
+with open(xml, "r") as file:
+    lines = file.readlines()
+
+for i, line in enumerate(lines):
+    if "PySide6 Flatpak Template" in line:
+        lines[i] = lines[i].replace("PySide6 Flatpak Template", app_name)
+    elif "io.github.rfrench3.pyside6-flatpak-template" in line:
+        lines[i] = lines[i].replace("io.github.rfrench3.pyside6-flatpak-template", app_id)
+    elif ("https://github.com/rfrench3/pyside6-flatpak-template" in line) and parse_github:
+        lines[i] = lines[i].replace("https://github.com/rfrench3/pyside6-flatpak-template", f"https://github.com/{username}/{repo}")
+    elif ("https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template" in line) and parse_github:
+        lines[i] = lines[i].replace("https://raw.githubusercontent.com/rfrench3/pyside6-flatpak-template", f"https://raw.githubusercontent.com/{username}/{repo}")
+
+with open(xml, "w") as file:
+    file.writelines(lines)
+
+
+print("Success! Now you must:\n" \
+"- update the README.md\n" \
+"- ensure you are using the latest PySide6 and KDE runtimes (check the yml and requirements.in/txt).\n" \
+f"- finish updating the information in the {id}.metainfo.xml file\n" \
+"- create your new application!")
