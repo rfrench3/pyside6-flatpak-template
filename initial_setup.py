@@ -15,6 +15,7 @@ png = current_folder / "io.github.rfrench3.pyside6-flatpak-template.png"
 svg = current_folder / "io.github.rfrench3.pyside6-flatpak-template.svg"
 desktop = current_folder / "io.github.rfrench3.pyside6-flatpak-template.desktop"
 mainpy = current_folder / "src" / "main.py"
+widgetspy = current_folder / "src" / "widget_manager.py"
 readme = current_folder / "README.md"
 
 if input("Accept changes? (y/N) ").lower() != 'y':
@@ -86,6 +87,19 @@ def edit_mainpy():
     with open(mainpy, "w") as file:
         file.writelines(lines)
 edit_mainpy()
+
+### widget_manager.py ###
+def edit_widgetspy():
+    with open(widgetspy, "r") as file:
+        lines = file.readlines()
+
+    for i, line in enumerate(lines):
+        if '''app_icon = QIcon.fromTheme("io.github.rfrench3.pyside6apptemplate")''' in line:
+            lines[i] = lines[i].replace("pyside6apptemplate", app_command)
+
+    with open(widgetspy, "w") as file:
+        file.writelines(lines)
+edit_widgetspy()
 
 ### desktop file ###
 def edit_desktop():

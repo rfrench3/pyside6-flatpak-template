@@ -18,14 +18,11 @@ It should never output None unless something has gone horribly wrong, so the pos
 """
 
 import sys
-import os
 
 # locating other application files
 sys.path.insert(0, "/app/share/pyside6apptemplate") # flatpak path
 from program_file_locator import DATA_DIR
 from widget_manager import app_icon, load_widget, load_message_box
-
-
 
 #PySide6, Qt Designer UI files
 from PySide6.QtWidgets import (
@@ -36,10 +33,10 @@ from PySide6.QtWidgets import (
 # Not all elements that you may use are in PySide6.QtWidgets
 from PySide6.QtGui import QAction
 
-# Edit the .ui file using Qt Designer
-ui_main = os.path.join(DATA_DIR, "main_window.ui")
-ui_advanced = os.path.join(DATA_DIR, "advanced_main_window.ui")
-ui_dynamic = os.path.join(DATA_DIR, "dynamic.ui")
+# Edit the .ui file using Qt Designer, pathlib.Path is used here
+ui_main = DATA_DIR / "main_window.ui"
+ui_advanced = DATA_DIR / "advanced_main_window.ui"
+ui_dynamic = DATA_DIR / "dynamic.ui"
 
 # logic for the basic main window
 class MainWindow:
@@ -51,12 +48,12 @@ class MainWindow:
             ) # it is only set here for example, there is no difference if it is excluded
 
         # Initialize UI Elements
-        self.load_message_box = self.window.findChild(QPushButton,"load_message_box")
-        self.load_advanced_window = self.window.findChild(QPushButton,"load_advanced_window")
+        self.load_message_box: QPushButton = self.window.findChild(QPushButton,"load_message_box") #type:ignore
+        self.load_advanced_window: QPushButton = self.window.findChild(QPushButton,"load_advanced_window") #type:ignore
 
         # Connect actions to slots or functions
-        self.load_message_box.clicked.connect(self.button_clicked) #type:ignore
-        self.load_advanced_window.clicked.connect(self.launch_advanced_ui) #type:ignore
+        self.load_message_box.clicked.connect(self.button_clicked)
+        self.load_advanced_window.clicked.connect(self.launch_advanced_ui)
 
         
         self.window.show() # must be at the end of the __init__
@@ -80,31 +77,31 @@ class AdvancedMainWindow:
         self.window = load_widget(ui_file, "Advanced Main Window")
 
         # Initialize UI elements
-        self.top_tab = self.window.findChild(QTabWidget, "tabWidget_top")
-        self.nested_tab = self.window.findChild(QTabWidget, "tabWidget_nested")
-        self.set_tabs_to_initial = self.window.findChild(QPushButton, "set_tabs_to_initial")
-        self.set_to_2nd_tab = self.window.findChild(QPushButton, "set_to_2nd_tab")
-        self.load_dynamically = self.window.findChild(QToolButton, "load_dynamically")
-        self.scroll_area = self.window.findChild(QScrollArea, "scrollArea")
-        self.container = self.window.findChild(QWidget,"container")
+        self.top_tab: QTabWidget = self.window.findChild(QTabWidget, "tabWidget_top") #type:ignore
+        self.nested_tab: QTabWidget = self.window.findChild(QTabWidget, "tabWidget_nested") #type:ignore
+        self.set_tabs_to_initial: QPushButton = self.window.findChild(QPushButton, "set_tabs_to_initial") #type:ignore
+        self.set_to_2nd_tab: QPushButton = self.window.findChild(QPushButton, "set_to_2nd_tab") #type:ignore
+        self.load_dynamically: QToolButton = self.window.findChild(QToolButton, "load_dynamically") #type:ignore
+        self.scroll_area: QScrollArea = self.window.findChild(QScrollArea, "scrollArea") #type:ignore
+        self.container: QWidget = self.window.findChild(QWidget,"container") #type:ignore
 
         self.dynamic_list:list = []
 
         # Define logic for UI elements
-        self.set_tabs_to_initial.clicked.connect(self.reset_tabs) #type:ignore
-        self.set_to_2nd_tab.clicked.connect(self.top_tab_to_tab_2) #type:ignore
-        self.load_dynamically.clicked.connect(self.load_new_thing) #type:ignore
+        self.set_tabs_to_initial.clicked.connect(self.reset_tabs)
+        self.set_to_2nd_tab.clicked.connect(self.top_tab_to_tab_2)
+        self.load_dynamically.clicked.connect(self.load_new_thing)
         
         self.window.show() # must be at the end of the __init__
 
     def reset_tabs(self):
         """Set both tabs to index 0."""
-        self.top_tab.setCurrentIndex(0) #type:ignore
-        self.nested_tab.setCurrentIndex(0) #type:ignore
+        self.top_tab.setCurrentIndex(0)
+        self.nested_tab.setCurrentIndex(0)
 
     def top_tab_to_tab_2(self):
         """Set top_tab to index 1."""
-        self.top_tab.setCurrentIndex(1) #type:ignore
+        self.top_tab.setCurrentIndex(1)
 
     def load_new_thing(self):
         """Loads the dynamic.ui instances into the QScrollArea."""
@@ -116,15 +113,15 @@ class AdvancedMainWindow:
         
         # Add the new widget to the existing container layout
         # (which is positioned as wanted inside of the QScrollArea)
-        layout = self.container.layout() #type:ignore
+        layout = self.container.layout()
         layout.addWidget(dynamic_widget.window) #type:ignore
 
 # class for the dynamically loaded widgets in the advanced window
 class DynamicWidget():
     def __init__(self,ui_file) -> None:
         self.window = load_widget(ui_file)
-        self.delete_button = self.window.findChild(QPushButton,"delete_widget")
-        self.delete_button.clicked.connect(self.delete_self) #type:ignore
+        self.delete_button: QPushButton = self.window.findChild(QPushButton,"delete_widget") #type:ignore
+        self.delete_button.clicked.connect(self.delete_self)
 
     def delete_self(self):
         self.window.close()
