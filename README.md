@@ -2,7 +2,10 @@
 This is a base template for a flatpak app using PySide6, complete with additional helpful information.
 
 ### Information
-- CRITICAL: This repository does not follow standard python packaging conventions. It is strictly set up for creating a flatpak application, and adapting it for other packaging formats may prove difficult.
+- CRITICAL: 
+    - This repository does not follow standard python packaging conventions. It is strictly set up for creating a flatpak application, and adapting it for other packaging formats may prove difficult.
+    - There are three places you must update when a new version of PySide6 releases: the .yml file, the github workflows, and requirements.in (then regenerate requirements.txt)
+
 - There are multiple ways you can use PySide6 to create an app. This repository utilizes Qt Designer to create .ui files because I believe it is the easiest way to use Qt, but adapting it to QML and other formats should not be difficult.
 - At the time of writing, KDE does not have up-to-date bindings for Python, and attempting to use the Kwidgets present in Qt Designer will not work.
 - Github workers are set up for this repository to automate certain things, such as adding the packaged flatpak to tagged releases on Github.
@@ -43,11 +46,5 @@ flatpak-builder --force-clean --repo=repo builddir io.github.rfrench3.pyside6-fl
 flatpak build-bundle repo pyside6-flatpak-template.flatpak io.github.rfrench3.pyside6-flatpak-template
 ```
 
-### Important Notes
-The versions of many things in this repository may be out of date! Make sure to check the following and ensure they are up to date:
-- /requirements.in
-- /requirements.txt (generated from requirements.in)
-- /io.github.rfrench3.pyside6-flatpak-template.yml (lines 3 and 6)
-
 # Licensing
-Information for your options of licensing while using Qt can be found here: https://www.qt.io/qt-licensing
+Information for the licensing of apps that use Qt is located here: https://www.qt.io/qt-licensing
