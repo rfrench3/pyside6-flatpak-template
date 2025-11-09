@@ -46,9 +46,9 @@ def edit_yml():
     for i, line in enumerate(lines):
         if "io.github.rfrench3.pyside6-flatpak-template" in line:
             lines[i] = lines[i].replace("io.github.rfrench3.pyside6-flatpak-template", app_id)
-        elif "pyside6apptemplate" in line:
+        if "pyside6apptemplate" in line:
             lines[i] = lines[i].replace("pyside6apptemplate", app_command)
-        elif ("https://github.com/rfrench3/pyside6-flatpak-template.git" in line) and parse_github:
+        if ("https://github.com/rfrench3/pyside6-flatpak-template.git" in line) and parse_github:
             lines[i] = lines[i].replace("https://github.com/rfrench3/pyside6-flatpak-template.git", f"https://github.com/{username}/{repo}.git")
 
     with open(yml, "w") as file:
