@@ -2,7 +2,8 @@
 This is a base template for a flatpak app using PySide6, complete with additional helpful information.
 
 ### Information
-- There are multiple ways you can use PySide6 to create an app. This repository assumes you will use Qt Designer to create .ui files because I believe it is the easiest method.
+- CRITICAL: This repository does not follow standard python packaging conventions. It is strictly set up for creating a flatpak application, and adapting it for other packaging formats may prove difficult.
+- There are multiple ways you can use PySide6 to create an app. This repository utilizes Qt Designer to create .ui files because I believe it is the easiest way to use Qt, but adapting it to QML and other formats should not be difficult.
 - At the time of writing, KDE does not have up-to-date bindings for Python, and attempting to use the Kwidgets present in Qt Designer will not work.
 - Github workers are set up for this repository to automate certain things, such as adding the packaged flatpak to tagged releases on Github.
 
@@ -22,7 +23,7 @@ uv run python src/main.py
 
 
 ### yml File
-- The yml file is a blueprint for building the app. It can source files from a local directory, but has been set up here to look for a GitHub repository (a local directory section is present but commented out).
+- The yml file is a blueprint for building the app. It can source files from a local directory, but has been set up here to look for a GitHub repository (a local directory section is present, but commented out).
 - While the tag is able to be set to a branch (such as main), for security and stability reasons it should in all cases be set to a tagged release outside of testing your latest changes.
 
 ### Building the App
