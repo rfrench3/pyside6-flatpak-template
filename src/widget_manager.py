@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-only
 """This file contains functions that make it simpler to load elements, including .ui widgets from Qt Designer."""
 
 
