@@ -23,6 +23,14 @@ uv pip install -r requirements.txt
 # run application
 uv run python src/main.py
 ```
+This template is formatted with black:
+```bash
+# install black
+uv pip install black
+
+# format src/main.py
+uv run black src/main.py 
+```
 
 
 ### yml File
